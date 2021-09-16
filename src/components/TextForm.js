@@ -22,6 +22,12 @@ export default function TextForm(props) {
 
 
     }
+    const removeEmoji =()=> {
+        let newText = document.getElementById('mybox');
+        newText = text.replace(/([\u2700-\u27BF]|[\uE000-\uF8FF]|\uD83C[\uDC00-\uDFFF]|\uD83D[\uDC00-\uDFFF]|[\u2011-\u26FF]|\uD83E[\uDD10-\uDDFF])/g, '');
+          setText(newText);
+    }
+
 
 
 
@@ -44,6 +50,7 @@ export default function TextForm(props) {
                 <button className="btn btn-success mx-2" onClick={upperCaseClick}>Convert to UpperCase</button>
                 <button className="btn btn-success mx-2" onClick={lowerCaseClick}>Convert to LowerCase</button>
                 <button className="btn btn-success mx-2" onClick={handleCopy}>Copy Text</button>
+                <button className="btn btn-success mx-2" onClick={removeEmoji}>Remove Emojis</button>
             </div>
             <div className="conainer" style={{color:props.mode === 'dark'?'white':'black'}}>
                 <h2 className="my-3">{text.split(" ").length} words and {text.length} characters</h2>
