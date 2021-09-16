@@ -12,8 +12,7 @@ export default function TextForm(props) {
         let newText = text.toLowerCase();
         setText(newText);
     }
-
-
+    
     const handleCopy = () => {
 
         var text = document.getElementById("mybox");
@@ -28,9 +27,16 @@ export default function TextForm(props) {
           setText(newText);
     }
 
-
-
-
+    const removeExtraSpaces=()=>{
+        let newText = document.getElementById('mybox');
+           newText = text.replace(/\s+/g, " ");
+           setText(newText)
+    }
+    
+    const ClearText =()=>{
+     let newText= document.getElementById('mybox').value = "";
+     setText(newText)
+    }
 
     const handleOnChange = (event) => {
         setText(event.target.value);
@@ -50,10 +56,13 @@ export default function TextForm(props) {
                 <button className="btn btn-success mx-2" onClick={upperCaseClick}>Convert to UpperCase</button>
                 <button className="btn btn-success mx-2" onClick={lowerCaseClick}>Convert to LowerCase</button>
                 <button className="btn btn-success mx-2" onClick={handleCopy}>Copy Text</button>
+                <button className="btn btn-success mx-2" onClick={removeExtraSpaces}>Remove Extra Spaces</button>
                 <button className="btn btn-success mx-2" onClick={removeEmoji}>Remove Emojis</button>
+                <button className="btn btn-success mx-2" onClick={ClearText}>Clear Text</button>
+
             </div>
             <div className="conainer" style={{color:props.mode === 'dark'?'white':'black'}}>
-                <h2 className="my-3">{text.split(" ").length} words and {text.length} characters</h2>
+                <h2 className="my-3">{text.trim().split(/\s+/).length} words and {text.length} characters</h2>
                 <h3 className="my-3">Preview</h3>
                 <p>{text}</p>
             </div>
