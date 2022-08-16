@@ -41,8 +41,8 @@ function App() {
               <About />
             </Route>
 
-            <Route exact path="/">
-              <TextForm heading="Enter Text for UpperCase and lowerCase" mode={mode} />
+            <Route exact path="/TextConverter">
+              <TextForm heading=" " mode={mode} />
             </Route>
           </Switch>
 
